@@ -18,7 +18,7 @@
         <div class="row">
             <h3>TAE FOR DEV</h3>
         </div>
-
+        <a href="index.php?content=insert" class="btn btn-success">Cretae</a>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Navbar</a>

@@ -14,4 +14,10 @@ else if($content=="home"){
 }else if($content=="product"){
     require_once("views/product/views/index.inc.php"); 
 }
+else if($content=="insert"){
+    require_once("views/product_type/views/insert.inc.php"); 
+}
+else if($content=="update"){
+    require_once("views/product_type/views/update.inc.php"); 
+}
 ?>

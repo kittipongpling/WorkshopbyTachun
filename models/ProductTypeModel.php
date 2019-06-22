@@ -7,7 +7,7 @@ class ProductTypeModel extends BaseModel{
             mysqli_set_charset(static::$db,"utf8");
         }
     }
-    // function ดึงข้อมุล tb_product_type
+    // function ดึงข้อมุล tb_product_type(ค้นหาตามชื่)
     function getProductTypeBy($name = ''){
         $sql = "SELECT * FROM tb_product_type WHERE product_type_name LIKE ('%$name%') 
         ";
@@ -21,13 +21,27 @@ class ProductTypeModel extends BaseModel{
             return $data;
         }
     }
+    // function ดึงข้อมุล tb_product_type(ที่อยู่ตาม ID)
+    function getProductTypeById($id = ''){
+        $sql = "SELECT * FROM tb_product_type WHERE product_type_id LIKE ('%$id%') 
+        ";
+        //ใส่ไว้สำหรับ ค้นหาข้อมูล
+        if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) { //ถ้าเผื่อ query ข้อมูลได้ มันจะทำตามเงื่อนไขเรื่อยๆ 
+            $data = mysqli_fetch_array($result,MYSQLI_ASSOC) ;
+            $result->close();
+            return $data;
+        }
+    }
     // function เพิ่มข้อมุล tb_product_type
-    function insertProductTypeByID($id,$data = []){
+    function insertProductTypeByID($data = []){
         $sql = " INSERT INTO `tb_product_type`(`product_type_id`, `product_type_name`) VALUES (
         null,  -- values 1
         '".$data['product_type_name']."' -- values 2
         ) 
         ";
+        // echo "<pre>";
+        // print_r($sql);
+        // echo "</pre>";
          if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
             return 1;
         }else {
@@ -35,11 +49,14 @@ class ProductTypeModel extends BaseModel{
         }
     }
     // function แก้ไขข้อมุล tb_product_type
-    function updateProductTypeByID($id,$data = []){
+    function updateProductTypeByID($data = []){
         $sql = " UPDATE tb_product_type SET 
         product_type_name = '".$data['product_type_name']."'
-        WHERE product_type_id = '$id' 
+        WHERE product_type_id = '".$data['product_type_id']."' 
         ";
+        echo "<pre>";
+        print_r($sql);
+        echo "</pre>";
          if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
             return 1;
         }else {
