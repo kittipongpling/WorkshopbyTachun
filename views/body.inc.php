@@ -20,4 +20,18 @@ else if($content=="insert"){
 else if($content=="update"){
     require_once("views/product_type/views/update.inc.php"); 
 }
+// User_type
+else if($content=="user_type"){
+    require_once("views/user_type/views/index.inc.php"); 
+}
+else if($content=="user_insert"){
+    require_once("views/user_type/views/insert.inc.php"); 
+}
+else if($content=="user_update"){
+    require_once("views/user_type/views/update.inc.php"); 
+}
+// User
+else if($content=="user"){
+    require_once("views/user/views/index.inc.php"); 
+}
 ?>
